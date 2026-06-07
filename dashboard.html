@@ -20,6 +20,46 @@ color:white;
 padding-bottom:80px;
 }
 
+/* TASK BANNER */
+.task-banner{
+width:100%;
+border-radius:15px;
+display:block;
+}
+
+/* CARDS */
+.task-card,.earn-card,.profile-card{
+background:#1e293b;
+padding:20px;
+border-radius:15px;
+margin-top:15px;
+line-height:1.6;
+}
+
+/* BUTTON */
+.start-btn{
+background:#2563eb;
+color:white;
+border:none;
+padding:10px 20px;
+border-radius:10px;
+cursor:pointer;
+}
+
+/* WITHDRAW BUTTON */
+.task-withdraw{
+position:absolute;
+top:10px;
+right:10px;
+background:#2563eb;
+border:none;
+color:white;
+padding:5px 8px;
+font-size:11px;
+border-radius:6px;
+cursor:pointer;
+}
+
 .balance-box{
 margin:20px;
 background:#1e293b;
@@ -47,45 +87,33 @@ font-size:12px;
 cursor:pointer;
 }
 
-/* TASK */
-.tab-content{
-padding:20px;
-}
-
-.task-banner{
-width:100%;
-border-radius:15px;
-display:block;
-}
-
-.task-withdraw{
-position:absolute;
-top:10px;
-right:10px;
-background:#2563eb;
-border:none;
-color:white;
-padding:5px 8px;
-font-size:11px;
-border-radius:6px;
-}
-
-/* CARDS */
-.task-card,.earn-card,.profile-card{
-background:#1e293b;
-padding:20px;
-border-radius:15px;
-margin-top:15px;
-line-height:1.6;
-}
-
-.start-btn{
-background:#2563eb;
-color:white;
-border:none;
-padding:10px 20px;
+/* SMALL BOX */
+.small-box{
+margin-top:10px;
+background:#111827;
+padding:12px;
 border-radius:10px;
+text-align:center;
 cursor:pointer;
+}
+
+.logout{
+background:red;
+color:white;
+}
+
+/* INVITE */
+.invite-title{
+text-align:center;
+font-size:32px;
+color:#60a5fa;
+margin:20px 0;
+}
+
+.ref-code{
+font-size:20px;
+color:#22c55e;
+font-weight:bold;
 }
 
 /* NAV */
@@ -116,34 +144,6 @@ font-weight:bold;
 
 .hidden{
 display:none;
-}
-
-/* PROFILE + INVITE */
-.small-box{
-margin-top:10px;
-background:#111827;
-padding:12px;
-border-radius:10px;
-text-align:center;
-cursor:pointer;
-}
-
-.logout{
-background:red;
-color:white;
-}
-
-.invite-title{
-text-align:center;
-font-size:32px;
-color:#60a5fa;
-margin:20px 0;
-}
-
-.ref-code{
-font-size:20px;
-color:#22c55e;
-font-weight:bold;
 }
 
 </style>
@@ -178,12 +178,19 @@ font-weight:bold;
 <!-- EARNINGS TAB -->
 <div id="earningsTab" class="tab-content hidden">
 <div class="earn-card">
+
 <h3>Total Earnings</h3>
 <p>₹0</p>
+
+<br>
+
+<h3>Earning History</h3>
+<p>No history yet.</p>
+
 </div>
 </div>
 
-<!-- INVITE TAB (SWAPPED) -->
+<!-- INVITE TAB -->
 <div id="inviteTab" class="tab-content hidden">
 
 <div class="invite-title">🎁 INVITE & EARN</div>
@@ -204,7 +211,7 @@ style="width:100%; border-radius:15px; margin-top:15px;">
 
 </div>
 
-<!-- PROFILE TAB (SWAPPED) -->
+<!-- PROFILE TAB -->
 <div id="profileTab" class="tab-content hidden">
 
 <div class="balance-box">
@@ -224,12 +231,12 @@ style="width:100%; border-radius:15px; margin-top:15px;">
 
 </div>
 
-<!-- NAV (UPDATED ORDER) -->
+<!-- NAV -->
 <div class="bottom-nav">
 
 <button id="taskBtn" class="active">Task</button>
 <button id="earnBtn">Earnings</button>
-<button id="inviteBtn">Invite</button>
+<button id="inviteBtn">Invite & Earn</button>
 <button id="profileBtn">Profile</button>
 
 </div>
