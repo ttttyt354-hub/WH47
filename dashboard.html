@@ -146,6 +146,14 @@ font-weight:bold;
 display:none;
 }
 
+  #addOptions{
+margin-top:10px;
+}
+
+#addOptions.hidden{
+display:none;
+}
+  
 </style>
 </head>
 
@@ -190,32 +198,35 @@ display:none;
 </div>
 </div>
 
-<!-- INVITE TAB -->
-<div id="inviteTab" class="tab-content hidden">
-
-<div class="invite-title">🎁 INVITE & EARN</div>
-
+<!-- EARNINGS TAB -->
+<div id="earningsTab" class="tab-content hidden">
 <div class="earn-card">
-<h3>Invitation Code</h3>
-<p class="ref-code">WH45-REF-7891</p>
+
+<h3>Total Earnings</h3>
+<p>₹0</p>
+
+<br>
+
+<h3>Total Withdrawal</h3>
+<p>₹0</p>
+
+<br>
+
+<h3>Earning History</h3>
+<p>No history yet.</p>
+
 </div>
-
-<div class="earn-card">
-<p>
-You will earn ₹50 Referral Bonus when your referred friend completes their first withdrawal successfully.
-</p>
-</div>
-
-<img src="Generated Image June 07, 2026 - 6_53PM.png"
-style="width:100%; border-radius:15px; margin-top:15px;">
-
 </div>
 
 <!-- PROFILE TAB -->
 <div id="profileTab" class="tab-content hidden">
 
 <div class="balance-box">
-<button class="withdraw-btn">Withdraw</button>
+<button class="withdraw-btn"
+onclick="window.location.href='withdraw.html'">
+Withdraw
+</button>
+
 <p>Current Balance</p>
 <h2>₹0</h2>
 </div>
@@ -226,18 +237,14 @@ style="width:100%; border-radius:15px; margin-top:15px;">
 <p><strong>Completed Tasks:</strong> 0</p>
 </div>
 
-<div class="small-box">➕ Add Card</div>
-<div class="small-box logout">Logout</div>
+<div class="small-box" id="addCardBtn">➕ Add Card</div>
 
+<div id="addOptions" class="hidden">
+<div class="small-box">🏦 Add Bank Account</div>
+<div class="small-box">💳 Add UPI ID</div>
 </div>
 
-<!-- NAV -->
-<div class="bottom-nav">
-
-<button id="taskBtn" class="active">Task</button>
-<button id="earnBtn">Earnings</button>
-<button id="inviteBtn">Invite & Earn</button>
-<button id="profileBtn">Profile</button>
+<div class="small-box logout">Logout</div>
 
 </div>
 
@@ -285,7 +292,13 @@ hideAll();
 tabs.profileTab.classList.remove("hidden");
 btns.profileBtn.classList.add("active");
 }
+const addCardBtn=document.getElementById("addCardBtn");
+const addOptions=document.getElementById("addOptions");
 
+addCardBtn.onclick=()=>{
+addOptions.classList.toggle("hidden");
+};
+  
 </script>
 
 </body>
