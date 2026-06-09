@@ -46,7 +46,7 @@ border-radius:10px;
 cursor:pointer;
 }
 
-/* WITHDRAW BUTTON */
+/* TASK WITHDRAW */
 .task-withdraw{
 position:absolute;
 top:10px;
@@ -74,6 +74,7 @@ color:#22c55e;
 font-size:32px;
 }
 
+/* PROFILE WITHDRAW */
 .withdraw-btn{
 position:absolute;
 top:15px;
@@ -146,27 +147,28 @@ font-weight:bold;
 display:none;
 }
 
-  #addOptions{
+/* ADD OPTIONS */
+#addOptions{
 margin-top:10px;
 }
 
 #addOptions.hidden{
 display:none;
 }
-  
+
 </style>
 </head>
 
 <body>
 
 <!-- TASK TAB -->
-<div id="taskTab" class="tab-content">
+<div id="taskTab">
 
 <div style="position:relative;">
-  <button class="task-withdraw">Withdraw</button>
+<button class="task-withdraw">Withdraw</button>
 
-  <img src="Generated Image June 07, 2026 - 6_41PM.png"
-       class="task-banner">
+<img src="Generated Image June 07, 2026 - 6_41PM.png"
+class="task-banner">
 </div>
 
 <div class="task-card">
@@ -184,22 +186,7 @@ display:none;
 </div>
 
 <!-- EARNINGS TAB -->
-<div id="earningsTab" class="tab-content hidden">
-<div class="earn-card">
-
-<h3>Total Earnings</h3>
-<p>₹0</p>
-
-<br>
-
-<h3>Earning History</h3>
-<p>No history yet.</p>
-
-</div>
-</div>
-
-<!-- EARNINGS TAB -->
-<div id="earningsTab" class="tab-content hidden">
+<div id="earningsTab" class="hidden">
 <div class="earn-card">
 
 <h3>Total Earnings</h3>
@@ -218,8 +205,24 @@ display:none;
 </div>
 </div>
 
+<!-- INVITE TAB -->
+<div id="inviteTab" class="hidden">
+
+<div class="invite-title">🎁 INVITE & EARN</div>
+
+<div class="earn-card">
+<h3>Invitation Code</h3>
+<p class="ref-code">WH45-REF-7891</p>
+</div>
+
+<div class="earn-card">
+<p>You will earn ₹50 Referral Bonus when your friend completes first withdrawal.</p>
+</div>
+
+</div>
+
 <!-- PROFILE TAB -->
-<div id="profileTab" class="tab-content hidden">
+<div id="profileTab" class="hidden">
 
 <div class="balance-box">
 <button class="withdraw-btn"
@@ -248,57 +251,77 @@ Withdraw
 
 </div>
 
+<!-- NAV -->
+<div class="bottom-nav">
+
+<button id="taskBtn" class="active">Task</button>
+<button id="earnBtn">Earnings</button>
+<button id="inviteBtn">Invite</button>
+<button id="profileBtn">Profile</button>
+
+</div>
+
 <script>
 
-const tabs={
-taskTab:document.getElementById("taskTab"),
-earningsTab:document.getElementById("earningsTab"),
-inviteTab:document.getElementById("inviteTab"),
-profileTab:document.getElementById("profileTab")
+const tabs = {
+taskTab: document.getElementById("taskTab"),
+earningsTab: document.getElementById("earningsTab"),
+inviteTab: document.getElementById("inviteTab"),
+profileTab: document.getElementById("profileTab")
 };
 
-const btns={
-taskBtn:document.getElementById("taskBtn"),
-earnBtn:document.getElementById("earnBtn"),
-inviteBtn:document.getElementById("inviteBtn"),
-profileBtn:document.getElementById("profileBtn")
+const btns = {
+taskBtn: document.getElementById("taskBtn"),
+earnBtn: document.getElementById("earnBtn"),
+inviteBtn: document.getElementById("inviteBtn"),
+profileBtn: document.getElementById("profileBtn")
 };
 
 function hideAll(){
-Object.values(tabs).forEach(t=>t.classList.add("hidden"));
-Object.values(btns).forEach(b=>b.classList.remove("active"));
+Object.values(tabs).forEach(t => t.classList.add("hidden"));
+Object.values(btns).forEach(b => b.classList.remove("active"));
 }
 
-btns.taskBtn.onclick=()=>{
+btns.taskBtn.onclick = () => {
 hideAll();
 tabs.taskTab.classList.remove("hidden");
 btns.taskBtn.classList.add("active");
-}
+};
 
-btns.earnBtn.onclick=()=>{
+btns.earnBtn.onclick = () => {
 hideAll();
 tabs.earningsTab.classList.remove("hidden");
 btns.earnBtn.classList.add("active");
-}
+};
 
-btns.inviteBtn.onclick=()=>{
+btns.inviteBtn.onclick = () => {
 hideAll();
 tabs.inviteTab.classList.remove("hidden");
 btns.inviteBtn.classList.add("active");
-}
+};
 
-btns.profileBtn.onclick=()=>{
+btns.profileBtn.onclick = () => {
 hideAll();
 tabs.profileTab.classList.remove("hidden");
 btns.profileBtn.classList.add("active");
-}
-const addCardBtn=document.getElementById("addCardBtn");
-const addOptions=document.getElementById("addOptions");
+};
 
-addCardBtn.onclick=()=>{
+/* ADD CARD TOGGLE */
+const addCardBtn = document.getElementById("addCardBtn");
+const addOptions = document.getElementById("addOptions");
+
+addCardBtn.onclick = (event) => {
+event.stopPropagation();
 addOptions.classList.toggle("hidden");
 };
-  
+
+/* OUTSIDE CLICK CLOSE */
+document.addEventListener("click", function(event){
+if (!addCardBtn.contains(event.target) && !addOptions.contains(event.target)) {
+addOptions.classList.add("hidden");
+}
+});
+
 </script>
 
 </body>
